@@ -24,21 +24,21 @@ func (s *Set[T]) Len() int {
 	return len(s.set)
 }
 
-func (s *Set[T]) Insert(elem T) {
-	s.set[elem] = struct{}{}
-}
-
-func (s *Set[T]) Remove(elem T) {
-	delete(s.set, elem)
-}
-
 func (s *Set[T]) IsEmpty() bool {
 	return s.Len() == 0
+}
+
+func (s *Set[T]) Insert(elem T) {
+	s.set[elem] = struct{}{}
 }
 
 func (s *Set[T]) Contains(needle T) bool {
 	_, ok := s.set[needle]
 	return ok
+}
+
+func (s *Set[T]) Remove(elem T) {
+	delete(s.set, elem)
 }
 
 func (s *Set[T]) Clear() {
