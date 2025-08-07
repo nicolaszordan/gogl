@@ -8,20 +8,31 @@ import (
 )
 
 func TestFilter(t *testing.T) {
-	input_slice := []int{1, 2, 3, 4, 5}
-	is_even := func(n int) bool {
+	inputSlice := []int{1, 2, 3, 4, 5}
+	isEven := func(n int) bool {
 		return n%2 == 0
 	}
-
-	expected := []int{2, 4}
-
-	output := make([]int, 0)
-	for v := range Filter(is_even, slices.Values(input_slice)) {
-		output = append(output, v)
+	isOdd := func(n int) bool {
+		return n%2 != 0
 	}
 
-	if !glslices.Compare(expected, output) {
-		t.Errorf("Expected %v but got %v", expected, output)
+	expectedEven := []int{2, 4}
+	expectedOdd := []int{1, 3, 5}
+
+	outputEven := make([]int, 0, len(expectedEven))
+	for v := range Filter(isEven, slices.Values(inputSlice)) {
+		outputEven = append(outputEven, v)
+	}
+	outputOdd := make([]int, 0, len(expectedOdd))
+	for v := range Filter(isOdd, slices.Values(inputSlice)) {
+		outputOdd = append(outputOdd, v)
+	}
+
+	if !glslices.Compare(expectedEven, outputEven) {
+		t.Errorf("Expected %v but got %v", expectedEven, outputEven)
+	}
+	if !glslices.Compare(expectedOdd, outputOdd) {
+		t.Errorf("Expected %v but got %v", expectedOdd, outputOdd)
 	}
 }
 
@@ -33,8 +44,8 @@ func TestUnzip(t *testing.T) {
 	expectedA := []int{0, 1, 2}
 	expectedB := []string{"one", "two", "three"}
 
-	var outputA []int
-	var outputB []string
+	outputA := make([]int, 0, len(expectedA))
+	outputB := make([]string, 0, len(expectedB))
 	for v := range outputItB {
 		outputB = append(outputB, v)
 	}
