@@ -11,3 +11,7 @@ A `set` type to be more expressive about the developper's intent then having a `
 ## Slices
 
 A suite of helper function for slices
+
+## Iter
+
+A suite of helper iterator functions
