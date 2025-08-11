@@ -67,3 +67,15 @@ Filters an iterator based on a predicate function.
 ### Unzip
 
 Unzips an iterator of pairs into two separate iterators.
+
+## Ptr
+
+A suite of helper functions for working with pointers.
+
+### To
+
+Returns a pointer to the given value.
+
+### Equal
+
+Checks if two pointers are nil or if their dereferenced values are equal.
